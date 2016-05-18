@@ -1,0 +1,22 @@
+:local(.container) {
+  border-bottom: 1px solid #eee;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+}
+
+:local(.title) {
+}
+
+:local(.title) h3 {
+
+}
+
+:local(.info) {
+  color: #999;
+}
+
+:local(.avatar) {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
