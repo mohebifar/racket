@@ -27,7 +27,7 @@ export default function create(client, data) {
     });
   }
 
-  store.rootTask = sagaMiddleware.run(sagas);
+  store.rootTask = sagaMiddleware.run(sagas, client);
   store.close = () => store.dispatch(END);
 
   return store;

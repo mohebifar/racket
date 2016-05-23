@@ -1,8 +1,8 @@
 import {takeLatest} from 'redux-saga';
-import {LOAD as TRENDING_REPOS_LOAD, loadSaga as loadTrendingSaga} from './modules/trendingRepos';
+import {LOAD as GITHUB_HOTTEST_LOAD, loadSaga as loadHottestSaga} from './modules/githubHottest';
 
-export default function *rootSaga() {
+export default function *rootSaga(client) {
   yield [
-    takeLatest(TRENDING_REPOS_LOAD, loadTrendingSaga)
+    takeLatest(GITHUB_HOTTEST_LOAD, loadHottestSaga, client)
   ];
 }

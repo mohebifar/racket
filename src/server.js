@@ -53,9 +53,15 @@ function renderPage({renderProps, store, res, client}) {
 }
 
 app.use((req, res) => {
+  if (__DEVELOPMENT__) {
+    // Do not cache webpack stats: the script file would change since
+    // hot module replacement is enabled in the development env
+    webpackIsomorphicTools.refresh();
+  }
+
   const client = new ApiClient();
   const memoryHistory = createHistory(req.originalUrl);
-  const store = createStore(memoryHistory);
+  const store = createStore(client);
   const history = syncHistoryWithStore(memoryHistory, store);
 
   match({

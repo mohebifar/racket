@@ -35,21 +35,15 @@ module.exports = {
         loaders: ['react-hot', 'babel-loader?' + JSON.stringify(babelLoaderQuery)]
       },
       {
-        test: /\.html$/,
-        loader: 'file?name=[name].[ext]'
-      },
-      {
         test: /\.scss$/,
-        loader: 'style!css?importLoaders=2&sourceMap&localIdentName=[local]__[hash:base64:5]!postcss-loader'
+        loader: 'style!css?importLoaders=2&sourceMap&localIdentName=[local]__[hash:base64:5]!sass-loader'
       },
       {
-        test: /\.css/,
-        loader: 'style!css?importLoaders=2&sourceMap&localIdentName=[local]__[hash:base64:5]'
+        test: /\.less$/,
+        loader: 'style!css?importLoaders=2&sourceMap&localIdentName=[local]__[hash:base64:5]!less-loader'
       },
-      {
-        test: webpackIsomorphicToolsPlugin.regular_expression('images'),
-        loader: 'url-loader?limit=10240'
-      },
+      {test: /\.css/, loader: 'style!css?importLoaders=2&sourceMap&localIdentName=[local]__[hash:base64:5]'},
+      {test: webpackIsomorphicToolsPlugin.regular_expression('images'), loader: 'url-loader?limit=10240'},
       {test: /\.woff(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=application/font-woff"},
       {test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=application/font-woff"},
       {test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=application/octet-stream"},

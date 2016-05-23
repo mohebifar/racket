@@ -1,5 +1,6 @@
 import React, {Component, PropTypes} from 'react';
-import styles from './RepositoryInfo.css';
+// import styles from './RepositoryInfo.css';
+import styles from './RepositoryInfo.scss';
 
 export default class RepositoryInfo extends Component {
   static propTypes = {
@@ -17,20 +18,22 @@ export default class RepositoryInfo extends Component {
     return (
       <div>
         <div className={styles.container}>
-          <div className="pull-left">
-            <img className={styles.avatar} src={repo.owner.avatar_url} alt="Avatar"/>
+          <div className={styles.avatar}>
+            <img src={repo.owner.avatar_url} alt="Avatar"/>
           </div>
-          <div className="pull-left">
+          <div className={styles.information}>
             <div className={styles.title}>
               <h3>
-                <a target="_blank" href={repo.git_url}>{repo.full_name}</a>
+                <a target="_blank" href={repo.html_url}>{repo.full_name}</a>
               </h3>
             </div>
-            <div className={styles.info}>
+            <div className={styles.description}>
+              {repo.description}
+            </div>
+            <div className={styles.meta}>
               <span className="language">{repo.language}</span>
             </div>
           </div>
-          <div className="clearfix"></div>
         </div>
       </div>
     );

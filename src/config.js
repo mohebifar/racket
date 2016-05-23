@@ -1,7 +1,7 @@
 export const port = process.env.PORT || 3000;
 export const staticPath = `${__dirname}/../static`;
 export const rootDir = `${__dirname}/..`;
-export const apiPath = `https://api.evand.ir`;
+export const apiPath = `https://api.github.com`; // We use github api for example
 
 export const head = {
   titleTemplate: 'Racket: %s',

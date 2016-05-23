@@ -5,19 +5,21 @@
   display: flex;
 }
 
-:local(.title) h3 {
-  margin-top: 0;
+:local(.title) {
+  h3 {
+    margin-top: 0;
+  }
 }
 
 :local(.avatar) {
   padding-right: 20px;
-}
 
-:local(.avatar) img {
-  width: 70px;
-  height: 70px;
-  border-radius: 50%;
-  border: 1px dashed #dbdbdb;
+  img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: 1px dashed #dbdbdb;
+  }
 }
 
 :local(.information) {

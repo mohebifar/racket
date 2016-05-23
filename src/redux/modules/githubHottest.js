@@ -27,7 +27,8 @@ export default function reducer(state = initialState, action = {}) {
     case LOAD_FAIL:
       return {
         loaded: false,
-        loading: false
+        loading: false,
+        error: action.error
       };
     default:
       return state;
@@ -40,9 +41,10 @@ export function load() {
   };
 }
 
-export function loadFail() {
+export function loadFail(error) {
   return {
-    type: LOAD_FAIL
+    type: LOAD_FAIL,
+    error
   };
 }
 
@@ -53,15 +55,18 @@ export function loadSuccess(data) {
   };
 }
 
-export function *loadSaga() {
+export function *loadSaga(client) {
   try {
-    const data = yield fetch(
-      'https://api.github.com/search/repositories?' +
-      ['q=created:>2016-01-01', 'sort=stars', 'order=desc'].join('&')
-    ).then(r => r.json());
+    var date = new Date();
+    date.setDate(date.getDate() - 30);
+
+    const data = yield client
+      .get(
+        '/search/repositories?' +
+        ['q=created:>' + date.toISOString(), 'sort=stars', 'order=desc'].join('&')
+      );
 
     yield put(loadSuccess(data.items));
-
   } catch (error) {
     yield put(loadFail(error));
   }

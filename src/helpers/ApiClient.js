@@ -1,5 +1,5 @@
 import {apiPath} from 'config';
-
+import fetch from 'isomorphic-fetch';
 const methods = ['get', 'post', 'put', 'patch', 'del'];
 
 function formatUrl(path) {
@@ -7,17 +7,40 @@ function formatUrl(path) {
   return apiPath + adjustedPath;
 }
 
+function checkStatus(response) {
+  if (response.status >= 200 && response.status < 300) {
+    return response;
+  }
+
+  return response.json().then(json => Promise.reject(json));
+}
+
+function parseJSON(response) {
+  return response.json();
+}
+
+function fetchCreator(method) {
+  return (url, {data, ...options} = {}) => {
+    const fetchOptions = options;
+    fetchOptions.headers = fetchOptions.headers || {};
+    fetchOptions.headers.Accept = 'application/json';
+
+    if (data) {
+      fetchOptions.body = JSON.stringify(data);
+      fetchOptions.headers['Content-Type'] = 'application/json';
+    }
+
+    fetchOptions.method = method;
+
+    return fetch(formatUrl(url), fetchOptions)
+      .then(checkStatus)
+      .then(parseJSON);
+  };
+}
+
 export default class ApiClient {
   constructor(req) {
-    methods.forEach((method) =>
-      this[method] = (path, {params, data} = {}) => new Promise((resolve, reject) => {
-        setTimeout(
-          () => {
-            resolve('salaaaaaaam');
-          },
-          1000
-        );
-      }));
+    methods.forEach((method) => this[method] = fetchCreator(method));
   }
 
   /*
