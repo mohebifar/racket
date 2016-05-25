@@ -5,6 +5,6 @@ import NotFound from '../src/containers/NotFound/NotFound';
 
 describe('Not found page', function () {
   it('contains the text "Not found"', function () {
-    expect(shallow(<NotFound />).contains(<span>Page not found :(</span>)).to.equal(true);
+    expect(shallow(<NotFound />).contains(<h1>404!</h1>)).to.equal(true);
   });
 });

@@ -1,4 +1,3 @@
-import fetch from 'isomorphic-fetch';
 import {put, call} from 'redux-saga/effects';
 
 export const LOAD = 'app/trendingRepos/LOAD';

@@ -1,4 +1,5 @@
 require('babel-register')();
+require('babel-polyfill');
 
 var jsdom = require('jsdom').jsdom;
 
