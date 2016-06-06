@@ -25,12 +25,22 @@ function renderPage({renderProps, store, res, client}) {
 
       res.status(200);
 
-      res.send('<!doctype html>\n' +
-        ReactDOM.renderToString(<Html
-          assets={webpackIsomorphicTools.assets()}
-          component={component}
-          store={store}
-        />));
+      store
+        .rootTask
+        .done
+        .then(() => {
+          res.send('<!doctype html>\n' +
+            ReactDOM.renderToString(<Html
+              assets={webpackIsomorphicTools.assets()}
+              component={component}
+              store={store}
+            />));
+        })
+        .catch(() => {
+          res.status(500).send('Error while fetching data');
+        });
+
+      store.close();
     })
     .catch(err => {
       console.error(err.stack);

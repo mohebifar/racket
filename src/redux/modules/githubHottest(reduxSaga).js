@@ -35,25 +35,8 @@ export default function reducer(state = initialState, action = {}) {
 }
 
 export function load() {
-  return (dispatch, getState, client) => {
-    dispatch({
-      type: LOAD
-    });
-
-    var date = new Date();
-    date.setDate(date.getDate() - 30);
-
-    return client
-      .get(
-        '/search/repositories?' +
-        ['q=created:>' + date.toISOString(), 'sort=stars', 'order=desc'].join('&')
-      )
-      .then(data => {
-        dispatch(loadSuccess(data.items));
-      })
-      .catch(error => {
-        dispatch(loadFail(error));
-      });
+  return {
+    type: LOAD
   };
 }
 
@@ -69,4 +52,21 @@ export function loadSuccess(data) {
     type: LOAD_SUCCESS,
     data
   };
+}
+
+export function *loadSaga(client) {
+  try {
+    var date = new Date();
+    date.setDate(date.getDate() - 30);
+
+    const data = yield client
+      .get(
+        '/search/repositories?' +
+        ['q=created:>' + date.toISOString(), 'sort=stars', 'order=desc'].join('&')
+      );
+
+    yield put(loadSuccess(data.items));
+  } catch (error) {
+    yield put(loadFail(error));
+  }
 }

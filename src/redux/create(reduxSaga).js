@@ -1,22 +1,22 @@
 import {createStore, applyMiddleware, compose} from 'redux';
-import thunk from 'redux-thunk';
 import reducers from './reducers';
+import createSagaMiddleware, {END} from 'redux-saga';
+import sagas from './sagas';
 
 export default function create(client, data) {
   let middleware;
 
-  const thunkMiddleware = thunk.withExtraArgument(client);
-
+  const sagaMiddleware = createSagaMiddleware();
   if (__DEVELOPMENT__) {
     middleware = compose(
-      applyMiddleware(thunkMiddleware),
+      applyMiddleware(sagaMiddleware),
       __CLIENT__ &&
       typeof window.devToolsExtension !== 'undefined' ?
         window.devToolsExtension() :
         f => f
     );
   } else {
-    middleware = applyMiddleware(thunkMiddleware);
+    middleware = applyMiddleware(sagaMiddleware);
   }
 
   const store = createStore(reducers, data, middleware);
@@ -26,6 +26,9 @@ export default function create(client, data) {
       store.replaceReducer(require('./reducers'));
     });
   }
+
+  store.rootTask = sagaMiddleware.run(sagas, client);
+  store.close = () => store.dispatch(END);
 
   return store;
 }
