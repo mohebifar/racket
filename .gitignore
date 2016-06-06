@@ -1,3 +1,7 @@
-node_modules/
-generators/
-*.log
+node_modules
+/generators/*
+/test/*
+demo
+.idea
+.DS_Store
+release.txt
