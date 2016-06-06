@@ -6,7 +6,7 @@ import Helmet from 'react-helmet';
 export default class Index extends Component {
   render() {
     return (<div className={styles.wrapper}>
-      <Helmet title="A"/>
+      <Helmet title="Developing a react redux universal app had never been so easy!"/>
       <div className={styles.jumbotron}>
         <div className="container">
           <h1>Racket!</h1>
@@ -35,7 +35,6 @@ export default class Index extends Component {
             From each item with multiple options, you can choose the one you prefer:
           </p>
           <ul>
-            <li><strong>UI Library</strong>: react, preact</li>
             <li><strong>Side effects</strong>: redux-thunk, redux-saga</li>
             <li><strong>Styling</strong>: sass, less, PostCSS (soon), Radium (soon)</li>
             <li>Redux</li>
