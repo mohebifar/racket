@@ -14,11 +14,6 @@ import createHistory from 'react-router/lib/createMemoryHistory';
 import {Provider} from 'react-redux';
 import getRoutes from './routes';
 
-const app = express();
-
-app.use(bodyParser.json());
-app.use(express.static(staticPath));
-
 function renderPage({renderProps, store, res, client}) {
   loadOnServer({...renderProps, store, helpers: {client}})
     .then(() => {
@@ -51,6 +46,11 @@ function renderPage({renderProps, store, res, client}) {
       console.error(err.stack);
     });
 }
+
+const app = express();
+
+app.use(bodyParser.json());
+app.use(express.static(staticPath));
 
 app.use((req, res) => {
   if (__DEVELOPMENT__) {

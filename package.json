@@ -7,7 +7,7 @@
     "test": "npm run eslint && npm run enzyme",
     "enzyme": "NODE_PATH=./src ./node_modules/karma/bin/karma start",
     "dev": "concurrently --kill-others \"npm run webpack-dev\" \"npm run start-dev\"",
-    "webpack-dev": "set NODE_ENV=development && set NODE_PATH=./src && node webpack/webpack-dev-server.js",
+    "webpack-dev": "NODE_ENV=development NODE_PATH=./src node webpack/webpack-dev-server.js",
     "start-dev": "NODE_ENV=development NODE_PATH=./src node ./bin/server.js",
     "start": "NODE_ENV=production NODE_PATH=./src node ./bin/server.js",
     "build": "node ./node_modules/.bin/webpack --colors --config ./webpack/prod.config.js",
@@ -16,7 +16,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mohebifar/generator-react-redux.git"
+    "url": "git+https://github.com/mohebifar/racket.git"
   },
   "keywords": [
     "react",

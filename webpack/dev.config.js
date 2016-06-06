@@ -30,7 +30,7 @@ module.exports = {
   module: {
     loaders: [
       {
-        test: /\.js$/,
+        test: /\.jsx?$/,
         exclude: /node_modules/,
         loaders: ['react-hot', 'babel-loader?' + JSON.stringify(babelLoaderQuery)]
       },
@@ -38,10 +38,14 @@ module.exports = {
         test: /\.scss$/,
         loader: 'style!css?importLoaders=2&sourceMap&localIdentName=[local]__[hash:base64:5]!sass-loader'
       },
-      {
-        test: /\.less$/,
-        loader: 'style!css?importLoaders=2&sourceMap&localIdentName=[local]__[hash:base64:5]!less-loader'
-      },
+      // {
+      //   test: /\.scss$/,
+      //   loader: 'style!css?importLoaders=2&sourceMap&localIdentName=[local]__[hash:base64:5]!postcss-loader'
+      // },
+      // {
+      //   test: /\.less$/,
+      //   loader: 'style!css?importLoaders=2&sourceMap&localIdentName=[local]__[hash:base64:5]!less-loader'
+      // },
       {test: /\.css/, loader: 'style!css?importLoaders=2&sourceMap&localIdentName=[local]__[hash:base64:5]'},
       {test: webpackIsomorphicToolsPlugin.regular_expression('images'), loader: 'url-loader?limit=10240'},
       {test: /\.woff(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=application/font-woff"},
@@ -51,12 +55,12 @@ module.exports = {
       {test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=image/svg+xml"}
     ]
   },
-  postcss: function () {
-    return {
-      defaults: [require('precss'), require('lost'), require('postcss-color-function')],
-      cleaner: []
-    };
-  },
+  // postcss: function () {
+  //   return {
+  //     defaults: [require('precss'), require('lost'), require('postcss-color-function')],
+  //     cleaner: []
+  //   };
+  // },
   output: {
     filename: 'main.js',
     path: __dirname + '/dist',

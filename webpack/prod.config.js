@@ -3,17 +3,22 @@ var path = require('path');
 var webpack = require('webpack');
 var CleanPlugin = require('clean-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var relativeAssetsPath = '../static/dist';
-var assetsPath = path.join(__dirname, relativeAssetsPath);
+
+var projectRootPath = path.resolve(__dirname, '../');
+var assetsPath = path.resolve(projectRootPath, './static/dist');
+
 
 var babelrc = fs.readFileSync('./.babelrc');
 var babelLoaderQuery = JSON.parse(babelrc);
 
+var WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin');
+var webpackIsomorphicToolsPlugin = new WebpackIsomorphicToolsPlugin(require('./webpack-isomorphic-tools'));
+
 module.exports = {
-  context: __dirname + '/../src',
+  context: path.resolve(__dirname, '..'),
   entry: {
-    'main': [
-      './client.js'
+    main: [
+      './src/client.js'
     ]
   },
   resolve: {
@@ -26,42 +31,53 @@ module.exports = {
   module: {
     loaders: [
       {
-        test: /\.js$/,
+        test: /\.jsx?$/,
         exclude: /node_modules/,
         loaders: ['babel-loader?' + JSON.stringify(babelLoaderQuery)]
       },
       {
-        test: /\.html$/,
-        loader: 'file?name=[name].[ext]'
-      },
-      {
-        test: /\.png|\.jpg|\.svg$/,
-        loader: 'url'
-      },
-      {
         test: /\.scss$/,
-        loader: ExtractTextPlugin.extract('style', 'css?modules&importLoaders=2&sourceMap&localIdentName=[local]___[hash:base64:5]!postcss-loader')
-      }
+        loader: ExtractTextPlugin.extract('style', 'css?importLoaders=2&sourceMap!sass-loader')
+      },
+      // {
+      //   test: /\.scss$/,
+      //   loader: ExtractTextPlugin.extract('style', 'css?importLoaders=2&sourceMap!postcss-loader')
+      // },
+      // {
+      //   test: /\.less$/,
+      //   loader: ExtractTextPlugin.extract('style', 'css?importLoaders=2&sourceMap!less-loader')
+      // },
+      {test: /\.css/, loader: ExtractTextPlugin.extract('style', 'css?importLoaders=2&sourceMap')},
+      {test: webpackIsomorphicToolsPlugin.regular_expression('images'), loader: 'url-loader?limit=10240'},
+      {test: /\.woff(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=application/font-woff"},
+      {test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=application/font-woff"},
+      {test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=application/octet-stream"},
+      {test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: "file"},
+      {test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=image/svg+xml"}
     ]
   },
-  postcss: function () {
-    return {
-      defaults: [require('precss'), require('lost'), require('postcss-color-function')],
-      cleaner: []
-    };
-  },
+  // postcss: function () {
+  //   return {
+  //     defaults: [require('precss'), require('lost'), require('postcss-color-function')],
+  //     cleaner: []
+  //   };
+  // },
   output: {
     path: assetsPath,
-    filename: '[name]-[hash].js',
-    chunkFilename: '[name]-[hash].js',
+    filename: '[name]-[chunkhash].js',
+    chunkFilename: '[name]-[chunkhash].js',
     publicPath: '/dist/'
   },
   plugins: [
-    new CleanPlugin([relativeAssetsPath]),
+    new CleanPlugin([assetsPath], {root: projectRootPath}),
 
     // css files from the extract-text-plugin loader
-    new ExtractTextPlugin('[name].css', {allChunks: true}),
+    new ExtractTextPlugin('[name]-[chunkhash].css', {allChunks: true}),
     new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: '"production"'
+      },
+
       __CLIENT__: true,
       __SERVER__: false,
       __DEVELOPMENT__: false,
@@ -71,14 +87,6 @@ module.exports = {
     // ignore dev config
     new webpack.IgnorePlugin(/\.\/dev/, /\/config$/),
 
-    // set global vars
-    new webpack.DefinePlugin({
-      'process.env': {
-        // Useful to reduce the size of client-side libraries, e.g. react
-        NODE_ENV: JSON.stringify('production')
-      }
-    }),
-
     // optimizations
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.OccurenceOrderPlugin(),
@@ -86,6 +94,8 @@ module.exports = {
       compress: {
         warnings: false
       }
-    })
+    }),
+
+    webpackIsomorphicToolsPlugin
   ]
 };

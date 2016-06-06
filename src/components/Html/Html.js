@@ -36,6 +36,7 @@ export default class Html extends Component {
               media="screen, projection"
               rel="stylesheet"
               type="text/css"
+              charSet="utf-8"
             />)
       }
     </head>
