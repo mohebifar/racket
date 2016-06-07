@@ -5,15 +5,26 @@ import {shallow, render} from 'enzyme';
 import {Provider} from 'react-redux';
 import createStore from 'redux/create';
 import ApiClient from 'helpers/ApiClient';
-import ConnectedGithubHottest, {GithubHottest} from 'containers/GithubHottest/GithubHottest';
+import GithubHottest from 'containers/GithubHottest/GithubHottest';
 import RepositoryInfo from 'components/Github/RepositoryInfo';
 const client = new ApiClient();
 
 const setup = (state) => {
   const store = createStore(client, {githubHottest: state});
-  const component = <Provider store={store}><ConnectedGithubHottest /></Provider>;
+  const component = <Provider store={store}><GithubHottest /></Provider>;
 
   return {component, store};
+};
+
+const mockRepository = () => {
+  return {
+    full_name: 'Test',
+    stargazers_count: 2000,
+    owner: {
+      avatar_url: 'URL',
+      login: 'test'
+    }
+  };
 };
 
 describe('Github hottest page', function () {
@@ -28,12 +39,16 @@ describe('Github hottest page', function () {
   });
 
   it('renders one RepositoryInfo for each repository in the store', function () {
-    const props = {
+    const {component, store} = setup({
       loaded: true,
       loading: false,
-      repositories: [{}, {}, {}]
-    };
+      data: [mockRepository(), mockRepository(), mockRepository()]
+    });
 
-    expect(shallow(<GithubHottest {...props} />).find(RepositoryInfo)).to.have.length(3);
+    const shallowOption = {context: {store}};
+
+    expect(
+      shallow(component).shallow(shallowOption).shallow(shallowOption).shallow(shallowOption).find(RepositoryInfo)
+    ).to.have.length(3);
   });
 });
