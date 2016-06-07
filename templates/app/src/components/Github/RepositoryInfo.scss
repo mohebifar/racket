@@ -1,0 +1,27 @@
+:local(.container) {
+  border-bottom: 1px solid #eee;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  display: flex;
+}
+
+:local(.title) {
+  h3 {
+    margin-top: 0;
+  }
+}
+
+:local(.avatar) {
+  padding-right: 20px;
+
+  img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: 1px dashed #dbdbdb;
+  }
+}
+
+:local(.information) {
+
+}

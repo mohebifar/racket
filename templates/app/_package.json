@@ -64,6 +64,11 @@
     "clean-webpack-plugin": "^0.1.9",
     "css-loader": "^0.23.1",
     "enzyme": "^2.3.0",
+    "eslint": "^2.11.1",
+    "eslint-config-airbnb": "^9.0.1",
+    "eslint-plugin-import": "^1.8.1",
+    "eslint-plugin-jsx-a11y": "^1.3.0",
+    "eslint-plugin-react": "^5.1.1",
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.8.5",
     "jsdom": "^9.1.0",
@@ -74,13 +79,15 @@
     "karma-phantomjs-launcher": "^1.0.0",
     "karma-sourcemap-loader": "^0.3.7",
     "karma-webpack": "^1.7.0",<% if(filters.less) { %>
-    "less-loader": "^2.2.3",<% } %>
-    "lost": "^6.7.2",
+    "less": "^2.7.1",
+    "less-loader": "^2.2.3",<% } %><% if(filters.postcss) { %>
+    "lost": "^6.7.2",<% } %>
     "mocha": "^2.4.5",<% if(filters.sass) { %>
     "node-sass": "^3.7.0",<% } %>
     "phantomjs-polyfill": "0.0.2",
     "phantomjs-prebuilt": "^2.1.7",
     "piping": "^0.3.2",<% if(filters.postcss) { %>
+    "postcss-color-function": "^2.0.1",
     "postcss-loader": "^0.9.1",<% } %><% if(filters.postcss) { %>
     "precss": "^1.4.0",<% } %>
     "react-addons-test-utils": "^15.0.2",
