@@ -1,6 +1,6 @@
-import React, {Component, PropTypes} from 'react';
-// import styles from './RepositoryInfo.css';
+import React, { Component, PropTypes } from 'react';
 import styles from './RepositoryInfo.scss';
+// import styles from './RepositoryInfo.css';
 
 export default class RepositoryInfo extends Component {
   static propTypes = {
@@ -8,12 +8,15 @@ export default class RepositoryInfo extends Component {
       full_name: PropTypes.string.isRequired,
       language: PropTypes.string,
       stargazers_count: PropTypes.number.isRequired,
-      owner: PropTypes.shape({avatar_url: PropTypes.string.isRequired, login: PropTypes.string.isRequired}).isRequired
+      owner: PropTypes.shape({
+        avatar_url: PropTypes.string.isRequired,
+        login: PropTypes.string.isRequired
+      }).isRequired
     }).isRequired
   };
 
   render() {
-    const {repo} = this.props;
+    const { repo } = this.props;
 
     return (
       <div>

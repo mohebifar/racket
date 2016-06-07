@@ -1,6 +1,6 @@
 import React from 'react';
-import {Route, IndexRoute} from 'react-router';
-import {App, Index, GithubHottest, NotFound} from './containers';
+import { Route, IndexRoute } from 'react-router';
+import { App, Index, GithubHottest, NotFound } from './containers';
 
 export default function getRoutes() {
   return (<Route path="/" component={App}>

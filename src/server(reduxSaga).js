@@ -5,17 +5,17 @@ import bodyParser from 'body-parser';
 import express from 'express';
 import Html from 'components/Html/Html';
 import ApiClient from 'helpers/ApiClient';
-import {port, staticPath} from 'config';
+import { port, staticPath } from 'config';
 import createStore from 'redux/create';
-import {match} from 'react-router';
-import {syncHistoryWithStore} from 'react-router-redux';
-import {ReduxAsyncConnect, loadOnServer} from 'redux-connect';
+import { match } from 'react-router';
+import { syncHistoryWithStore } from 'react-router-redux';
+import { ReduxAsyncConnect, loadOnServer } from 'redux-connect';
 import createHistory from 'react-router/lib/createMemoryHistory';
-import {Provider} from 'react-redux';
+import { Provider } from 'react-redux';
 import getRoutes from './routes';
 
-function renderPage({renderProps, store, res, client}) {
-  loadOnServer({...renderProps, store, helpers: {client}})
+function renderPage({ renderProps, store, res, client }) {
+  loadOnServer({ ...renderProps, store, helpers: { client } })
     .then(() => {
       const component = (
         <Provider store={store} key="provider">
@@ -64,11 +64,7 @@ app.use((req, res) => {
   const store = createStore(client);
   const history = syncHistoryWithStore(memoryHistory, store);
 
-  match({
-      history,
-      routes: getRoutes(store),
-      location: req.originalUrl
-    },
+  match({ history, routes: getRoutes(store), location: req.originalUrl },
     (error, redirectLocation, renderProps) => {
       if (redirectLocation) {
         res.redirect(redirectLocation.pathname + redirectLocation.search);
@@ -76,7 +72,7 @@ app.use((req, res) => {
         console.error('ROUTER ERROR:', error);
         res.status(500);
       } else if (renderProps) {
-        renderPage({renderProps, store, res, client});
+        renderPage({ renderProps, store, res, client });
       } else {
         res.status(404).send('Not found');
       }

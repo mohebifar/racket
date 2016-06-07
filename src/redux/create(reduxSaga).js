@@ -1,6 +1,6 @@
-import {createStore, applyMiddleware, compose} from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import reducers from './reducers';
-import createSagaMiddleware, {END} from 'redux-saga';
+import createSagaMiddleware, { END } from 'redux-saga';
 import sagas from './sagas';
 
 export default function create(client, data) {

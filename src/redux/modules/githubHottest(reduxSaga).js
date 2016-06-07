@@ -1,4 +1,4 @@
-import {put, call} from 'redux-saga/effects';
+import { put } from 'redux-saga/effects';
 
 export const LOAD = 'app/trendingRepos/LOAD';
 export const LOAD_SUCCESS = 'app/trendingRepos/LOAD_SUCCESS';
@@ -56,7 +56,7 @@ export function loadSuccess(data) {
 
 export function *loadSaga(client) {
   try {
-    var date = new Date();
+    const date = new Date();
     date.setDate(date.getDate() - 30);
 
     const data = yield client

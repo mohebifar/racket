@@ -1,5 +1,5 @@
-import React, {Component, PropTypes} from 'react';
-import {head} from 'config';
+import React, { Component, PropTypes } from 'react';
+import { head } from 'config';
 import Helmet from 'react-helmet';
 import Navbar from 'components/Navbar/Navbar';
 import './App.css';
@@ -11,7 +11,7 @@ export default class App extends Component {
   };
 
   render() {
-    const {children} = this.props;
+    const { children } = this.props;
 
     return (<div>
       <Navbar />

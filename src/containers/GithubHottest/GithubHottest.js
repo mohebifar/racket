@@ -1,17 +1,18 @@
-import React, {Component, PropTypes} from 'react';
-import {asyncConnect} from 'redux-connect';
-import {connect} from 'react-redux';
-import {load} from 'redux/modules/githubHottest';
+import React, { Component, PropTypes } from 'react';
+import { asyncConnect } from 'redux-connect';
+import { connect } from 'react-redux';
+import { load } from 'redux/modules/githubHottest';
 import RepositoryInfo from 'components/Github/RepositoryInfo';
 import Helmet from 'react-helmet';
 import styles from './GithubHottest.scss';
 
 @asyncConnect([
   {
-    promise: ({store}) => {
+    promise: ({ store }) => {
       if (!store.getState().githubHottest.loaded) {
-        return store.dispatch(load())
+        return store.dispatch(load());
       }
+      return null;
     }
   }
 ])
@@ -28,7 +29,7 @@ export default class GithubHottest extends Component {
   };
 
   render() {
-    const {loading, loaded, repositories} = this.props;
+    const { loading, loaded, repositories } = this.props;
 
     return (<div className={styles.wrapper}>
       <div className="container">

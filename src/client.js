@@ -3,10 +3,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import createStore from 'redux/create';
 import ApiClient from 'helpers/ApiClient';
-import {Provider} from 'react-redux';
-import {Router, browserHistory} from 'react-router';
-import {syncHistoryWithStore} from 'react-router-redux';
-import {ReduxAsyncConnect} from 'redux-connect';
+import { Provider } from 'react-redux';
+import { Router, browserHistory } from 'react-router';
+import { syncHistoryWithStore } from 'react-router-redux';
+import { ReduxAsyncConnect } from 'redux-connect';
 import getRoutes from 'routes';
 
 const client = new ApiClient();
@@ -20,7 +20,7 @@ const component = (<Router
       props =>
         <ReduxAsyncConnect
           {...props}
-          helpers={{client}}
+          helpers={{ client }}
           filter={item => !item.deferred}
         />
       }

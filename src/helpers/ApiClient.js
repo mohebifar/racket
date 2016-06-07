@@ -1,4 +1,4 @@
-import {apiPath} from 'config';
+import { apiPath } from 'config';
 import fetch from 'isomorphic-fetch';
 const methods = ['get', 'post', 'put', 'patch', 'del'];
 
@@ -20,7 +20,7 @@ function parseJSON(response) {
 }
 
 function fetchCreator(method) {
-  return (url, {data, ...options} = {}) => {
+  return (url, { data, ...options } = {}) => {
     const fetchOptions = options;
     fetchOptions.headers = fetchOptions.headers || {};
     fetchOptions.headers.Accept = 'application/json';
@@ -39,8 +39,10 @@ function fetchCreator(method) {
 }
 
 export default class ApiClient {
-  constructor(req) {
-    methods.forEach((method) => this[method] = fetchCreator(method));
+  constructor() {
+    methods.forEach((method) => {
+      this[method] = fetchCreator(method);
+    });
   }
 
   /*

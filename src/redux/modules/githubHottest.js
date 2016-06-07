@@ -1,5 +1,3 @@
-import {put, call} from 'redux-saga/effects';
-
 export const LOAD = 'app/trendingRepos/LOAD';
 export const LOAD_SUCCESS = 'app/trendingRepos/LOAD_SUCCESS';
 export const LOAD_FAIL = 'app/trendingRepos/LOAD_FAIL';
@@ -34,13 +32,27 @@ export default function reducer(state = initialState, action = {}) {
   }
 }
 
+export function loadFail(error) {
+  return {
+    type: LOAD_FAIL,
+    error
+  };
+}
+
+export function loadSuccess(data) {
+  return {
+    type: LOAD_SUCCESS,
+    data
+  };
+}
+
 export function load() {
   return (dispatch, getState, client) => {
     dispatch({
       type: LOAD
     });
 
-    var date = new Date();
+    const date = new Date();
     date.setDate(date.getDate() - 30);
 
     return client
@@ -54,19 +66,5 @@ export function load() {
       .catch(error => {
         dispatch(loadFail(error));
       });
-  };
-}
-
-export function loadFail(error) {
-  return {
-    type: LOAD_FAIL,
-    error
-  };
-}
-
-export function loadSuccess(data) {
-  return {
-    type: LOAD_SUCCESS,
-    data
   };
 }
