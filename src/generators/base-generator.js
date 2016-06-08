@@ -3,7 +3,8 @@ import glob from 'glob';
 import lodash from 'lodash';
 import s from 'underscore.string';
 import fs from 'fs';
-import {Base} from 'yeoman-generator';
+import { Base } from 'yeoman-generator';
+import yoWelcome from 'yeoman-welcome';
 
 lodash.mixin(s.exports());
 
@@ -17,6 +18,7 @@ const filterRegex = /\(([a-z0-9]+)\)/i;
 export default class BaseGenerator extends Base {
   constructor(...args) {
     super(...args);
+    this.yoWelcome = yoWelcome;
   }
 
   init() {
@@ -57,11 +59,15 @@ export default class BaseGenerator extends Base {
     return matches && this.filters[matches[1]];
   }
 
-  processDirectory(source, destination) {
+  processDirectory(source, destination, excluded) {
     const root = path.isAbsolute(source) ? source : path.join(this.sourceRoot(), source);
-    const files = expandFiles('**', {dot: true, cwd: root});
+    const files = expandFiles('**', { dot: true, cwd: root });
 
     files.forEach(name => {
+      if (excluded.indexOf(name) !== -1) {
+        return;
+      }
+
       const src = path.join(root, name);
       let ignore = false;
       let dest = path.join(destination, name);

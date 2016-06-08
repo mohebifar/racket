@@ -1,11 +1,13 @@
 import path from 'path';
 import BaseGenerator from '../base-generator';
+const packageInfo = require('../../package.json');
+const baseRootPath = path.join(path.dirname(require.resolve('racket-template')), '..');
 
 class Generator extends BaseGenerator {
   constructor(...args) {
     super(...args);
 
-    this.argument('name', {type: String, required: false});
+    this.argument('name', { type: String, required: false });
 
     this.option('skip-install', {
       desc: 'Do not install dependencies',
@@ -41,7 +43,7 @@ class Generator extends BaseGenerator {
           }
         ];
 
-        this.prompt(prompt, ({asyncActions}) => {
+        this.prompt(prompt, ({ asyncActions }) => {
           this.options.reduxAsyncActions = asyncActions;
           if (asyncActions === 'redux-saga') {
             this.filters.reduxSaga = true;
@@ -62,7 +64,7 @@ class Generator extends BaseGenerator {
           }
         ];
 
-        this.prompt(prompt, ({styling}) => {
+        this.prompt(prompt, ({ styling }) => {
           this.options.styling = styling;
           this.filters[styling] = true;
           done();
@@ -74,9 +76,15 @@ class Generator extends BaseGenerator {
   get writing() {
     return {
       generateProject: function () {
-        this.sourceRoot(path.join(__dirname, '../../templates/app'));
+        const excludedFiles = [
+          'package.json',
+          '.npmignore',
+          'LICENSE'
+        ];
+
+        this.sourceRoot(baseRootPath);
         this.destinationRoot();
-        this.processDirectory('.', '.');
+        this.processDirectory('.', '.', excludedFiles);
       }
     };
   }
