@@ -8,6 +8,11 @@ Creating, developing and maintaining a universal react app had never been so eas
 [Live running demo](https://racket-demo.herokuapp.com/)
 
 # Installation
+First, note that you need to use npm 3. If you have not upgraded to npm 3, run:
+```
+npm i -g npm@3
+```
+
 Install `yo` and `generator-racket` via npm:
 
 ```
@@ -52,7 +57,7 @@ yo racket:component <component-name> [--stateless]
 ```
 
 ## Route
-To generate a new route run:
+To generate a new route and component run:
 
 ```
 yo racket:route <component-name>
