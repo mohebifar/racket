@@ -1,6 +1,7 @@
-import React, { Component, PropTypes } from 'react';
-import styles from './RepositoryInfo.scss';
-// import styles from './RepositoryInfo.css';
+import React, { Component, PropTypes } from 'react';<% if (filters.sass || filters.postcss) { %>
+import styles from './RepositoryInfo.scss';<% } %><% if (filters.less) { %>
+import styles from './RepositoryInfo.less';<% } %><% if (filters.css) { %>
+import styles from './RepositoryInfo.css';<% } %>
 
 export default class RepositoryInfo extends Component {
   static propTypes = {

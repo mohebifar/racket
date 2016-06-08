@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import styles from './Index.scss';
 import { Link } from 'react-router';
-import Helmet from 'react-helmet';
+import Helmet from 'react-helmet';<% if (filters.sass || filters.postcss) { %>
+import styles from './Index.scss';<% } %><% if (filters.less) { %>
+import styles from './Index.less';<% } %><% if (filters.css) { %>
+import styles from './Index.css';<% } %>
 
 const link = 'https://ghbtns.com/github-btn.html' +
   '?user=mohebifar&repo=racket&type=star&count=true&size=large';

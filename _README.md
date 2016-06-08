@@ -1,4 +1,4 @@
-<%= lodash.slugify(lodash.humanize(appname)) %>
+<%= lodash.slugify(lodash.humanize(appName)) %>
 
 This project was generated with the [Racket](https://github.com/mohebifar/racket)!
 

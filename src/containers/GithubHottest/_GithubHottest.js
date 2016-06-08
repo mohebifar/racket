@@ -3,8 +3,10 @@ import { asyncConnect } from 'redux-connect';
 import { connect } from 'react-redux';
 import { load } from 'redux/modules/githubHottest';
 import RepositoryInfo from 'components/Github/RepositoryInfo';
-import Helmet from 'react-helmet';
-import styles from './GithubHottest.scss';
+import Helmet from 'react-helmet';<% if (filters.sass || filters.postcss) { %>
+import styles from './GithubHottest.scss';<% } %><% if (filters.less) { %>
+import styles from './GithubHottest.less';<% } %><% if (filters.css) { %>
+import styles from './GithubHottest.css';<% } %>
 
 @asyncConnect([
   {
