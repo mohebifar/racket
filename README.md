@@ -5,6 +5,8 @@ Racket is a yeoman generator for creating **universal/isomorphic** web applicati
 
 Creating, developing and maintaining a universal react app had never been so easy!
 
+[Live running demo](https://racket-demo.herokuapp.com/)
+
 # Installation
 Install `yo` and `generator-racket` via npm:
 
@@ -25,7 +27,40 @@ Then run the following command to start creating your app.
 yo racket
 ```
 
+# Features
 From each item with multiple options, you can choose the one you prefer:
 
-- **Side effects**: redux-thunk, redux-saga
+- [react](https://github.com/facebook/react)
+- **Side effects**: [redux-thunk](https://github.com/gaearon/redux-thunk), [redux-saga](https://github.com/yelouafi/redux-saga)
 - **Styling**: sass, less, postcss, css, radium (soon)
+- [webpack](https://webpack.github.io/) + [webpack-isomorphic-tools](https://github.com/halt-hammerzeit/webpack-isomorphic-tools)
+- [redux](https://github.com/reactjs/redux), [redux-connect](https://github.com/makeomatic/redux-connect)
+- [react-router](https://github.com/reactjs/react-router), [react-router-redux](https://github.com/reactjs/react-router-redux)
+- **Testing**
+  - [enzyme](https://github.com/airbnb/enzyme)
+  - [mocha](https://github.com/mochajs/mocha)
+  - [karma](https://github.com/karma-runner/karma)
+
+
+
+# Generators
+## Component
+To generate a component run:
+
+```
+yo racket:component <component-name> [--stateless]
+```
+
+## Route
+To generate a new route run:
+
+```
+yo racket:route <component-name>
+```
+
+## Redux module
+To generate a [redux module](https://github.com/erikras/ducks-modular-redux) run:
+
+```
+yo racket:redux-module <name>
+```
