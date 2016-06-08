@@ -1,3 +1,4 @@
+import 'babel-polyfill';
 import path from 'path';
 import glob from 'glob';
 import lodash from 'lodash';
@@ -35,6 +36,13 @@ export default class BaseGenerator extends Base {
     );
 
     this.filters = this.filters || this.config.get('filters');
+    if (this.filters.sass || this.filters.postcss) {
+      this.styleSuffix = '.scss';
+    } else if (this.filters.less) {
+      this.styleSuffix = '.less';
+    } else if (this.filters.css) {
+      this.styleSuffix = '.css';
+    }
   }
 
   getTemplateParams(filePath) {
@@ -96,5 +104,9 @@ export default class BaseGenerator extends Base {
         }
       }
     });
+  }
+
+  templatePath(_path) {
+    return path.join(__dirname, '..', 'templates', _path);
   }
 }
