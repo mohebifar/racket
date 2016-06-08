@@ -4,8 +4,9 @@
   "description": "Scaffold a universal react application",
   "main": "index.js",
   "scripts": {
-    "babel": "babel src --out-dir .",
-    "watch": "babel src --watch --out-dir ."
+    "babel": "babel src --out-dir . --ignore /templates",
+    "watch": "babel src --watch --out-dir . --ignore /templates",
+    "prepublish": "npm run babel"
   },
   "repository": {
     "type": "git",
@@ -30,9 +31,10 @@
   },
   "homepage": "https://github.com/mohebifar/racket#readme",
   "dependencies": {
+    "babel-polyfill": "^6.9.1",
     "glob": "^7.0.3",
     "lodash": "^4.13.1",
-    "racket-template": "^1.2.0",
+    "racket-template": "^1.2.1",
     "underscore.string": "^3.3.4",
     "yeoman-generator": "^0.21.2"
   },
