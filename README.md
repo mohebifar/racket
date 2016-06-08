@@ -40,3 +40,27 @@ From each item with multiple options, you can choose the one you prefer:
   - [enzyme](https://github.com/airbnb/enzyme)
   - [mocha](https://github.com/mochajs/mocha)
   - [karma](https://github.com/karma-runner/karma)
+
+
+
+# Generators
+## Component
+To generate a component run:
+
+```
+yo racket:component <component-name> [--stateless]
+```
+
+## Route
+To generate a new route run:
+
+```
+yo racket:route <component-name>
+```
+
+## Redux module
+To generate a [redux module](https://github.com/erikras/ducks-modular-redux) run:
+
+```
+yo racket:redux-module <name>
+```
