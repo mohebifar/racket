@@ -49,6 +49,7 @@ class Generator extends BaseGenerator {
     return {
       generateComponent() {
         const routeFile = this.destinationPath('src/routes.js');
+        const containers = this.destinationPath('src/containers/index.js');
         const route = this.route.replace(/^\//, '');
 
         this.fs.copy(routeFile, routeFile, {
@@ -68,6 +69,20 @@ class Generator extends BaseGenerator {
               newString = newString.replace(
                 routeIdentifier, routeIdentifier + '\n    ' + routeString
               );
+            }
+
+            return newString;
+          }
+        });
+
+        this.fs.copy(containers, containers, {
+          process: content => {
+            let newString = content.toString().replace(/\s+$/, '');
+
+            const importString = `import ${this.name} from './${this.name}/${this.name}';`;
+
+            if (!newString.includes(importString)) {
+              newString += '\n' + importString + '\n'
             }
 
             return newString;
