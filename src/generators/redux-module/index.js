@@ -28,7 +28,7 @@ class Generator extends BaseGenerator {
             let newString = content.toString();
 
             const importString = `import ${this.name} from './modules/${this.name}';`;
-            const reducerString = `${this.name}',`;
+            const reducerString = `${this.name},`;
 
             if (!newString.includes(importString)) {
               newString = newString.replace(
