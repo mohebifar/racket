@@ -1,6 +1,6 @@
 {
   "name": "generator-racket",
-  "version": "1.4.2",
+  "version": "1.4.3",
   "description": "Scaffold a universal react application",
   "main": "index.js",
   "scripts": {
