@@ -1,6 +1,6 @@
 {
   "name": "racket-template",
-  "version": "1.2.0",
+  "version": "1.2.2",
   "main": "bin/server.js",
   "description": "Racket template",
   "dependencies": {},
