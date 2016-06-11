@@ -35,16 +35,19 @@ yo racket
 # Features
 From each item with multiple options, you can choose the one you prefer:
 
-- [react](https://github.com/facebook/react)
-- **Side effects**: [redux-thunk](https://github.com/gaearon/redux-thunk), [redux-saga](https://github.com/yelouafi/redux-saga)
-- **Styling**: sass, less, postcss, css, radium (soon)
-- [webpack](https://webpack.github.io/) + [webpack-isomorphic-tools](https://github.com/halt-hammerzeit/webpack-isomorphic-tools)
-- [redux](https://github.com/reactjs/redux), [redux-connect](https://github.com/makeomatic/redux-connect)
-- [react-router](https://github.com/reactjs/react-router), [react-router-redux](https://github.com/reactjs/react-router-redux)
+- UI Library: [React](https://github.com/facebook/react)
+- Flux Frameworks: [Redux](https://github.com/reactjs/redux)
+  - [Redux Connect](https://github.com/makeomatic/redux-connect) included.
+- Async actions: [Redux Thunk](https://github.com/gaearon/redux-thunk), [Redux Saga](https://github.com/yelouafi/redux-saga)
+- Stylesheets: Sass, Less, PostCSS, CSS
+- CSS Frameworks: [Bootstrap](https://github.com/twbs/bootstrap)
+  - Option to include [React Bootstrap](https://github.com/react-bootstrap/react-bootstrap)
+- Module Bundler: [Webpack](https://webpack.github.io/) + [Webpack Isomorphic Tools](https://github.com/halt-hammerzeit/webpack-isomorphic-tools)
+- Rouer: [React Router](https://github.com/reactjs/react-router) + [React Router Redux](https://github.com/reactjs/react-router-redux)
 - **Testing**
-  - [enzyme](https://github.com/airbnb/enzyme)
-  - [mocha](https://github.com/mochajs/mocha)
-  - [karma](https://github.com/karma-runner/karma)
+  - [Enzyme](https://github.com/airbnb/enzyme)
+  - [Mocha](https://github.com/mochajs/mocha)
+  - [Karma](https://github.com/karma-runner/karma)
 
 
 
