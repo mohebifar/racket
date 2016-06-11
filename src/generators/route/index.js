@@ -79,7 +79,7 @@ class Generator extends BaseGenerator {
           process: content => {
             let newString = content.toString().replace(/\s+$/, '');
 
-            const importString = `import ${this.name} from './${this.name}/${this.name}';`;
+            const importString = `export ${this.name} from './${this.name}/${this.name}';`;
 
             if (!newString.includes(importString)) {
               newString += '\n' + importString + '\n'
