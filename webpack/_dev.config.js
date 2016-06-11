@@ -34,19 +34,19 @@ module.exports = {
         test: /\.jsx?$/,
         exclude: /node_modules/,
         loaders: ['react-hot', 'babel-loader?' + JSON.stringify(babelLoaderQuery)]
-      },
+      },<% if (filters.sass) { %>
       {
         test: /\.scss$/,
         loader: 'style!css?importLoaders=2&sourceMap&localIdentName=[local]__[hash:base64:5]!sass-loader'
-      },
-      // {
-      //   test: /\.scss$/,
-      //   loader: 'style!css?importLoaders=2&sourceMap&localIdentName=[local]__[hash:base64:5]!postcss-loader'
-      // },
-      // {
-      //   test: /\.less$/,
-      //   loader: 'style!css?importLoaders=2&sourceMap&localIdentName=[local]__[hash:base64:5]!less-loader'
-      // },
+      },<% } %><% if (filters.postcss) { %>
+       {
+         test: /\.scss$/,
+         loader: 'style!css?importLoaders=2&sourceMap&localIdentName=[local]__[hash:base64:5]!postcss-loader'
+       },<% } %><% if (filters.less) { %>
+       {
+         test: /\.less$/,
+         loader: 'style!css?importLoaders=2&sourceMap&localIdentName=[local]__[hash:base64:5]!less-loader'
+       },<% } %>
       {test: /\.css/, loader: 'style!css?importLoaders=2&sourceMap&localIdentName=[local]__[hash:base64:5]'},
       {test: webpackIsomorphicToolsPlugin.regular_expression('images'), loader: 'url-loader?limit=10240'},
       {test: /\.woff(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=application/font-woff"},
@@ -55,13 +55,13 @@ module.exports = {
       {test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: "file"},
       {test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=image/svg+xml"}
     ]
-  },
-  // postcss: function () {
-  //   return {
-  //     defaults: [require('precss'), require('lost'), require('postcss-color-function')],
-  //     cleaner: []
-  //   };
-  // },
+  },<% if (filters.postcss) { %>
+   postcss: function () {
+     return {
+       defaults: [require('precss'), require('lost'), require('postcss-color-function')],
+       cleaner: []
+     };
+   },<% } %>
   output: {
     filename: 'main.js',
     path: __dirname + '/dist',

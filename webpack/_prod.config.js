@@ -35,19 +35,19 @@ module.exports = {
         test: /\.jsx?$/,
         exclude: /node_modules/,
         loaders: ['babel-loader?' + JSON.stringify(babelLoaderQuery)]
-      },
+      },<% if (filters.sass) { %>
       {
         test: /\.scss$/,
         loader: ExtractTextPlugin.extract('style', 'css?importLoaders=2&sourceMap!sass-loader')
-      },
-      // {
-      //   test: /\.scss$/,
-      //   loader: ExtractTextPlugin.extract('style', 'css?importLoaders=2&sourceMap!postcss-loader')
-      // },
-      // {
-      //   test: /\.less$/,
-      //   loader: ExtractTextPlugin.extract('style', 'css?importLoaders=2&sourceMap!less-loader')
-      // },
+      },<% } %><% if (filters.postcss) { %>
+      {
+        test: /\.scss$/,
+        loader: ExtractTextPlugin.extract('style', 'css?importLoaders=2&sourceMap!postcss-loader')
+      },<% } %><% if (filters.less) { %>
+      {
+        test: /\.less$/,
+        loader: ExtractTextPlugin.extract('style', 'css?importLoaders=2&sourceMap!less-loader')
+      },<% } %>
       {test: /\.css/, loader: ExtractTextPlugin.extract('style', 'css?importLoaders=2&sourceMap')},
       {test: webpackIsomorphicToolsPlugin.regular_expression('images'), loader: 'url-loader?limit=10240'},
       {test: /\.woff(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=application/font-woff"},
@@ -56,13 +56,13 @@ module.exports = {
       {test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: "file"},
       {test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=image/svg+xml"}
     ]
-  },
-  // postcss: function () {
-  //   return {
-  //     defaults: [require('precss'), require('lost'), require('postcss-color-function')],
-  //     cleaner: []
-  //   };
-  // },
+  },<% if (filters.postcss) { %>
+  postcss: function () {
+    return {
+      defaults: [require('precss'), require('lost'), require('postcss-color-function')],
+      cleaner: []
+    };
+  },<% } %>
   output: {
     path: assetsPath,
     filename: '[name]-[chunkhash].js',
