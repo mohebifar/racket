@@ -1,7 +1,15 @@
 import path from 'path';
 import BaseGenerator from '../base-generator';
 import prompts from './prompts';
-const baseRootPath = path.join(path.dirname(require.resolve('racket-template')), '..');
+let baseRootPath;
+
+if (process.env.TEMPLATE_PATH) {
+  baseRootPath = process.env.TEMPLATE_PATH;
+} else {
+  baseRootPath = path.join(path.dirname(require.resolve('racket-template')), '..');
+}
+
+console.log(baseRootPath);
 
 class Generator extends BaseGenerator {
   constructor(...args) {
@@ -21,7 +29,7 @@ class Generator extends BaseGenerator {
       init: function () {
         this.filters = {};
         this.init();
-        
+
         this.config.set('generatorVersion', this.rootGeneratorVersion());
         this.config.set('appName', this.appName);
       },
@@ -42,9 +50,12 @@ class Generator extends BaseGenerator {
             this[key] = answers[key];
           });
 
+          this.filters[answers.styling] = true;
           this.filters.reduxSaga = answers.reduxAsyncActions === 'redux-saga';
           this.filters.reduxThunk = answers.reduxAsyncActions === 'redux-thunk';
-          this.filters[answers.styling] = true;
+          this.filters.bootstrap = answers.bootstrap;
+          this.filters.reactBootstrap = answers.reactBootstrap;
+          this.filters.reduxForm = answers.reduxForm;
 
           done();
         });
@@ -66,7 +77,9 @@ class Generator extends BaseGenerator {
         const excludedFiles = [
           'package.json',
           '.npmignore',
-          'LICENSE'
+          'LICENSE',
+          '.gitignore',
+          'static/.gitignore'
         ];
 
         this.sourceRoot(baseRootPath);

@@ -10,5 +10,21 @@ export default [
     name: 'styling',
     message: 'What would you prefer for styling?',
     choices: ['sass', 'less', 'postcss', 'css']
+  },
+  {
+    type: 'confirm',
+    name: 'reduxForm',
+    message: 'Would you like to include Redux Form?'
+  },
+  {
+    type: 'confirm',
+    name: 'bootstrap',
+    message: 'Would you like to include Bootstrap?'
+  },
+  {
+    type: 'confirm',
+    name: 'reactBootstrap',
+    message: 'Would you like to include React Bootstrap?',
+    when: answers => answers.bootstrap
   }
 ];

@@ -72,7 +72,7 @@ export default class BaseGenerator extends Base {
     const files = expandFiles('**', { dot: true, cwd: root });
 
     files.forEach(name => {
-      if (excluded.indexOf(name) !== -1) {
+      if (excluded.indexOf(name) !== -1 || /(\.git(?!ignore))|\.idea|node_modules/.test(name)) {
         return;
       }
 
