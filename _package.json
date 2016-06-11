@@ -45,7 +45,8 @@
     "react-router-bootstrap": "^0.23.0",<% } %>
     "react-router-redux": "^4.0.4",
     "redux": "^3.5.2",
-    "redux-connect": "^2.4.0",<% if(filters.reduxSaga) { %>
+    "redux-connect": "^2.4.0",<% if(filters.reduxForm) { %>
+    "redux-form": "^5.2.5",<% } %><% if(filters.reduxSaga) { %>
     "redux-saga": "^0.10.4",<% } %><% if(filters.reduxThunk) { %>
     "redux-thunk": "^2.1.0",<% } %>
     "serialize-javascript": "^1.2.0",
