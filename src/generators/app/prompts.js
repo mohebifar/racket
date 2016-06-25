@@ -19,7 +19,8 @@ export default [
   {
     type: 'confirm',
     name: 'bootstrap',
-    message: 'Would you like to include Bootstrap?'
+    message: 'Would you like to include Bootstrap?',
+    when: answers => answers.sass
   },
   {
     type: 'confirm',

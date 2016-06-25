@@ -1,10 +1,10 @@
 {
   "name": "generator-racket",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "description": "Scaffold a universal react application",
   "main": "index.js",
   "scripts": {
-    "babel": "babel src --out-dir . --ignore /templates",
+    "babel": "babel s\rc --out-dir . --ignore /templates",
     "watch": "babel src --watch --out-dir . --ignore /templates",
     "prepublish": "npm run babel"
   },
