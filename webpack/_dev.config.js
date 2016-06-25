@@ -16,7 +16,7 @@ module.exports = {
   context: path.resolve(__dirname, '..'),
   entry: {
     main: [
-      'webpack-hot-middleware/client?path=http://' + host + ':' + port + '/__webpack_hmr',<% if (filters.bootsrap) { %>
+      'webpack-hot-middleware/client?path=http://' + host + ':' + port + '/__webpack_hmr',<% if (filters.bootstrap) { %>
       'bootstrap-sass!./src/theme/bootstrap.config.js',<% } %>
       './src/client.js'
     ]

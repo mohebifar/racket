@@ -17,7 +17,7 @@ var webpackIsomorphicToolsPlugin = new WebpackIsomorphicToolsPlugin(require('./w
 module.exports = {
   context: path.resolve(__dirname, '..'),
   entry: {
-    main: [<% if (filters.bootsrap) { %>
+    main: [<% if (filters.bootstrap) { %>
       'bootstrap-sass!./src/theme/bootstrap.config.prod.js',<% } %>
       './src/client.js'
     ]
