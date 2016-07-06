@@ -1,25 +1,31 @@
 import { createStore, applyMiddleware, compose } from 'redux';
+import { routerMiddleware } from 'react-router-redux';
 import reducers from './reducers';
 import createSagaMiddleware, { END } from 'redux-saga';
 import sagas from './sagas';
 
-export default function create(client, data) {
-  let middleware;
-
+export default function create(client, browserHistory, data) {
+  let enhancer;
   const sagaMiddleware = createSagaMiddleware();
+
+  const middleware = [
+    sagaMiddleware,
+    routerMiddleware(browserHistory)
+  ];
+
   if (__DEVELOPMENT__) {
-    middleware = compose(
-      applyMiddleware(sagaMiddleware),
+    enhancer = compose(
+      applyMiddleware(...middleware),
       __CLIENT__ &&
       typeof window.devToolsExtension !== 'undefined' ?
         window.devToolsExtension() :
         f => f
     );
   } else {
-    middleware = applyMiddleware(sagaMiddleware);
+    enhancer = applyMiddleware(...middleware);
   }
 
-  const store = createStore(reducers, data, middleware);
+  const store = createStore(reducers, data, enhancer);
 
   if (__DEVELOPMENT__ && module.hot) {
     module.hot.accept('./reducers', () => {

@@ -61,7 +61,7 @@ app.use((req, res) => {
 
   const client = new ApiClient();
   const memoryHistory = createHistory(req.originalUrl);
-  const store = createStore(client);
+  const store = createStore(client, memoryHistory);
   const history = syncHistoryWithStore(memoryHistory, store);
 
   match({ history, routes: getRoutes(store), location: req.originalUrl },

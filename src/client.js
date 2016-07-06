@@ -10,7 +10,7 @@ import { ReduxAsyncConnect } from 'redux-connect';
 import getRoutes from 'routes';
 
 const client = new ApiClient();
-const store = createStore(client, window.__data);
+const store = createStore(client, browserHistory, window.__data);
 
 const rootEl = document.getElementById('content');
 const history = syncHistoryWithStore(browserHistory, store);
