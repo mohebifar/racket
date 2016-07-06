@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-  A complete starting unviersal react/redux web app, best practices with generators, etc.
+  Generators, best practices and a complete starting app for developing universal React/Redux web app
   <br/>
   <img src="https://img.shields.io/npm/v/generator-racket.svg?maxAge=2592000" alt="Racket Version"/>
   <img src="https://img.shields.io/npm/dm/generator-racket.svg?maxAge=2592000" alt="Downloads"/>
