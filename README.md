@@ -1,7 +1,19 @@
-![Racket Logo](https://www.dropbox.com/s/y11z4zz4w8fcb1d/racket-logo.png?dl=1)
+<p align="center">
+  <a href="https://infinite.red/ignite"><img src="https://www.dropbox.com/s/y11z4zz4w8fcb1d/racket-logo.png?dl=1" alt="Racket Logo" width="250px"></a>
+</p>
+
+<p align="center">
+  A complete starting unviersal react/redux web app, best practices with generators, etc.
+  <br/>
+  <img src="https://img.shields.io/npm/v/generator-racket.svg?maxAge=2592000" alt="Racket Version"/>
+  <img src="https://img.shields.io/npm/dm/generator-racket.svg?maxAge=2592000" alt="Downloads"/>
+  <img src="https://img.shields.io/github/license/mohebifar/racket.svg?maxAge=2592000" alt="MIT License"/>
+</p>
 
 # Racket
 Racket is a yeoman generator for creating **universal/isomorphic** web applications. One of the pains for developers who want to use React or want to develop universal apps was knowing which libraries to choose and how tie them up! Racket responds to this issue by giving you the option to choose the tools/technologies that you prefer the most and offering a good structure that you can maintain for years!
+
+**No need to copy or fork, just use the command-line generator!**
 
 Creating, developing and maintaining a universal react app had never been so easy!
 
