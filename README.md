@@ -55,7 +55,7 @@ From each item with multiple options, you can choose the one you prefer:
 - CSS Frameworks: [Bootstrap](https://github.com/twbs/bootstrap)
   - Option to include [React Bootstrap](https://github.com/react-bootstrap/react-bootstrap)
 - Module Bundler: [Webpack](https://webpack.github.io/) + [Webpack Isomorphic Tools](https://github.com/halt-hammerzeit/webpack-isomorphic-tools)
-- Rouer: [React Router](https://github.com/reactjs/react-router) + [React Router Redux](https://github.com/reactjs/react-router-redux)
+- Router: [React Router](https://github.com/reactjs/react-router) + [React Router Redux](https://github.com/reactjs/react-router-redux)
 - **Testing**
   - [Enzyme](https://github.com/airbnb/enzyme)
   - [Mocha](https://github.com/mochajs/mocha)
