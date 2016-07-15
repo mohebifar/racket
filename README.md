@@ -19,6 +19,8 @@ Creating, developing and maintaining a universal react app had never been so eas
 
 [Live running demo](https://racket-demo.herokuapp.com/)
 
+> **Suggestion**: I do recommend to create a simple app with React + Redux yourself, before using Racket.
+
 # Installation
 First, note that you need to use npm 3. If you have not upgraded to npm 3, run:
 ```
