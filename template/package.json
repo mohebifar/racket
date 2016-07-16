@@ -1,0 +1,24 @@
+{
+  "name": "racket-template",
+  "version": "1.3.2",
+  "main": "bin/server.js",
+  "description": "Racket template",
+  "dependencies": {},
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mohebifar/racket.git"
+  },
+  "keywords": [
+    "Racket",
+    "react",
+    "universal",
+    "template"
+  ],
+  "author": "Mohamad Mohebifar",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mohebifar/racket/issues"
+  },
+  "homepage": "https://github.com/mohebifar/racket#readme"
+}
