@@ -13,19 +13,19 @@ export default [
   },
   {
     type: 'confirm',
-    name: 'reduxForm',
-    message: 'Would you like to include Redux Form?'
-  },
-  {
-    type: 'confirm',
     name: 'bootstrap',
     message: 'Would you like to include Bootstrap?',
-    when: answers => answers.sass
+    when: answers => answers.styling === 'sass'
   },
   {
     type: 'confirm',
     name: 'reactBootstrap',
     message: 'Would you like to include React Bootstrap?',
     when: answers => answers.bootstrap
+  },
+  {
+    type: 'confirm',
+    name: 'reduxForm',
+    message: 'Would you like to include Redux Form?'
   }
 ];
