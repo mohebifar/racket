@@ -5,7 +5,6 @@ import lodash from 'lodash';
 import s from 'underscore.string';
 import fs from 'fs';
 import { Base } from 'yeoman-generator';
-import yoWelcome from 'yeoman-welcome';
 
 lodash.mixin(s.exports());
 
@@ -19,7 +18,6 @@ const filterRegex = /\(([a-z0-9]+)\)/i;
 export default class BaseGenerator extends Base {
   constructor(...args) {
     super(...args);
-    this.yoWelcome = yoWelcome;
   }
 
   init() {

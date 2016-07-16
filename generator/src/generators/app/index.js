@@ -34,7 +34,6 @@ class Generator extends BaseGenerator {
         this.config.set('appName', this.appName);
       },
       info: function () {
-        this.log(this.yoWelcome);
         this.log('Creating a universal react app had never been so easy!\n');
       }
     };
