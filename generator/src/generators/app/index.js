@@ -9,8 +9,6 @@ if (process.env.TEMPLATE_PATH) {
   baseRootPath = path.join(path.dirname(require.resolve('racket-template')), '..');
 }
 
-console.log(baseRootPath);
-
 class Generator extends BaseGenerator {
   constructor(...args) {
     super(...args);
