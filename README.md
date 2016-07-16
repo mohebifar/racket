@@ -21,6 +21,8 @@ Creating, developing and maintaining a universal react app had never been so eas
 
 > **Suggestion**: I do recommend to create a simple app with React + Redux yourself, before using Racket.
 
+![Racket Screencast](https://www.dropbox.com/s/7ua7l3217gm1me4/racket-screencast.gif?dl=1)
+
 # Installation
 First, note that you need to use npm 3. If you have not upgraded to npm 3, run:
 ```
