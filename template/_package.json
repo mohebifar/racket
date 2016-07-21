@@ -4,15 +4,50 @@
   "description": "A React app generated with generator-racket",
   "main": "index.js",
   "scripts": {
-    "test": "NODE_PATH=./src ./node_modules/karma/bin/karma run",
-    "enzyme": "NODE_PATH=./src ./node_modules/karma/bin/karma start",
+    "test": "better-npm-run test",
+    "enzyme": "better-npm-run enzyme",
     "dev": "concurrently --kill-others \"npm run webpack-dev\" \"npm run start-dev\"",
-    "webpack-dev": "NODE_ENV=development NODE_PATH=./src node webpack/webpack-dev-server.js",
-    "start-dev": "NODE_ENV=development NODE_PATH=./src node ./bin/server.js",
-    "start": "NODE_ENV=production NODE_PATH=./src node ./bin/server.js",
+    "webpack-dev": "better-npm-run webpack-dev",
+    "start-dev": "better-npm-run start-dev",
+    "start": "better-npm-run start",
     "build": "node ./node_modules/.bin/webpack --colors --config ./webpack/prod.config.js",
     "eslint": "eslint ./src",
     "postinstall": "npm run build"
+  },
+  "betterScripts": {
+    "test": {
+      "command": "./node_modules/karma/bin/karma run",
+      "env": {
+        "NODE_PATH": "./src"
+      }
+    },
+    "enzyme": {
+      "command": "./node_modules/karma/bin/karma start",
+      "env": {
+        "NODE_PATH": "./src"
+      }
+    },
+    "webpack-dev": {
+      "command": "node webpack/webpack-dev-server.js",
+      "env": {
+        "NODE_PATH": "./src",
+        "NODE_ENV": "development"
+      }
+    },
+    "start-dev": {
+      "command": "node ./bin/server.js",
+      "env": {
+        "NODE_PATH": "./src",
+        "NODE_ENV": "development"
+      }
+    },
+    "start": {
+      "command": "node ./bin/server.js",
+      "env": {
+        "NODE_PATH": "./src",
+        "NODE_ENV": "production"
+      }
+    }
   },
   "repository": {
     "type": "git",
@@ -62,6 +97,7 @@
     "babel-preset-react": "^6.5.0",
     "babel-preset-react-hmre": "^1.1.1",
     "babel-preset-stage-0": "^6.5.0",<% if(filters.bootstrap) { %>
+    "better-npm-run": "0.0.9",
     "bootstrap-sass": "^3.3.6",
     "bootstrap-sass-loader": "^1.0.10",<% } %>
     "chai": "^3.5.0",
