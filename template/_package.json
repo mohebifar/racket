@@ -10,19 +10,19 @@
     "webpack-dev": "better-npm-run webpack-dev",
     "start-dev": "better-npm-run start-dev",
     "start": "better-npm-run start",
-    "build": "node ./node_modules/.bin/webpack --colors --config ./webpack/prod.config.js",
+    "build": "webpack --colors --config ./webpack/prod.config.js",
     "eslint": "eslint ./src",
     "postinstall": "npm run build"
   },
   "betterScripts": {
     "test": {
-      "command": "./node_modules/karma/bin/karma run",
+      "command": "karma run",
       "env": {
         "NODE_PATH": "./src"
       }
     },
     "enzyme": {
-      "command": "./node_modules/karma/bin/karma start",
+      "command": "karma start",
       "env": {
         "NODE_PATH": "./src"
       }
@@ -35,14 +35,14 @@
       }
     },
     "start-dev": {
-      "command": "node ./bin/server.js",
+      "command": "node bin/server.js",
       "env": {
         "NODE_PATH": "./src",
         "NODE_ENV": "development"
       }
     },
     "start": {
-      "command": "node ./bin/server.js",
+      "command": "node bin/server.js",
       "env": {
         "NODE_PATH": "./src",
         "NODE_ENV": "production"
