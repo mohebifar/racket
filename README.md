@@ -8,6 +8,7 @@
   <img src="https://img.shields.io/npm/v/generator-racket.svg?maxAge=2592000" alt="Racket Version"/>
   <img src="https://img.shields.io/npm/dm/generator-racket.svg?maxAge=2592000" alt="Downloads"/>
   <img src="https://img.shields.io/github/license/mohebifar/racket.svg?maxAge=2592000" alt="MIT License"/>
+  <a href="https://www.codementor.io/mohebifar?utm_source=github&utm_medium=button&utm_term=mohebifar&utm_campaign=github"><img src="https://cdn.codementor.io/badges/get_help_github.svg" alt="Get help on Codementor" style="max-width:100%" /></a>
 </p>
 
 # Racket
